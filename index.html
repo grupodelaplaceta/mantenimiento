@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grupo La Placeta – Próximamente</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1a0a2e;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Fondo con destellos */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(138, 43, 226, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(180, 0, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 80%, rgba(100, 0, 200, 0.2) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(180, 80, 255, 0.3);
+      border-radius: 24px;
+      padding: 56px 64px;
+      max-width: 680px;
+      width: 90%;
+      text-align: center;
+      backdrop-filter: blur(16px);
+      box-shadow:
+        0 0 60px rgba(160, 40, 255, 0.2),
+        0 0 120px rgba(120, 0, 220, 0.1),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .logo-wrapper {
+      margin-bottom: 40px;
+    }
+
+    .logo-wrapper img {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 20px rgba(200, 100, 255, 0.5));
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #b040ff, transparent);
+      margin: 0 auto 36px;
+      border-radius: 2px;
+    }
+
+    .message {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: rgba(240, 220, 255, 0.9);
+      letter-spacing: 0.01em;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .message strong {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #e0b0ff;
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 40px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(180, 80, 255, 0.4);
+      background: rgba(140, 30, 255, 0.15);
+      color: #c880ff;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .badge::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #b040ff;
+      box-shadow: 0 0 6px #b040ff;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* Partículas decorativas */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(180, 60, 255, 0.4);
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(110vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <div class="card">
+    <div class="logo-wrapper">
+      <img src="https://i.postimg.cc/ry0W1mLr/LLEGA-UNA-NUEVA1.png" alt="Grupo La Placeta" />
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="message">
+      <strong>Estamos trabajando para ti</strong>
+      Estamos trabajando en traerte la mejor experiencia del Grupo de La Placeta, volveremos pronto.
+    </p>
+
+   <!-- <div class="badge">Volvemos pronto</div> -->
+  </div>
+
+  <script>
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 4 + 2;
+      p.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        left: ${Math.random() * 100}%;
+        animation-duration: ${Math.random() * 12 + 8}s;
+        animation-delay: ${Math.random() * 10}s;
+        opacity: ${Math.random() * 0.6 + 0.2};
+      `;
+      container.appendChild(p);
+    }
+  </script>
+</body>
+</html>
